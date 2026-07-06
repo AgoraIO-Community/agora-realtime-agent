@@ -1,0 +1,22 @@
+{
+  "name": "agora-agent-pipeline-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build"
+  },
+  "dependencies": {
+    "agora-realtime-react": "0.1.0",
+    "@ai-sdk/react": "4.0.9",
+    "@tailwindcss/postcss": "^4.3.2",
+    "agora-rtc-sdk-ng": "^4.24.5",
+    "ai": "7.0.8",
+    "next": "16.2.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "tailwindcss": "^4.3.2",
+    "undici": "^8.6.0"
+  }
+}

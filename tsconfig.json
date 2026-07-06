@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "agora-realtime-react": ["packages/agora-realtime-react/src/index.ts"]
+    },
+    "types": ["node"]
+  },
+  "include": [
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
+    "templates/**/*.ts",
+    "templates/**/*.tsx",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "registry/**/*.ts",
+    "registry/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/dist"
+  ]
+}

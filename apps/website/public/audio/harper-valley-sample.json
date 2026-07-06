@@ -1,0 +1,25 @@
+{
+  "id": "harper-valley-bank-ff0296d00e5e4184",
+  "title": "Harper Valley Bank branch-hours call",
+  "license": "CC-BY-4.0",
+  "source": "https://github.com/cricketclub/gridspace-stanford-harper-valley",
+  "transcript": "https://github.com/cricketclub/gridspace-stanford-harper-valley/blob/master/data/transcript/ff0296d00e5e4184.json",
+  "tracks": {
+    "ai": {
+      "file": "/audio/harper-valley-agent.s16le.pcm",
+      "bytes": 831520,
+      "durationSeconds": 51.97,
+      "encoding": "s16le",
+      "channels": 1,
+      "sampleRate": 8000
+    },
+    "human": {
+      "file": "/audio/harper-valley-caller.s16le.pcm",
+      "bytes": 863520,
+      "durationSeconds": 53.97,
+      "encoding": "s16le",
+      "channels": 1,
+      "sampleRate": 8000
+    }
+  }
+}

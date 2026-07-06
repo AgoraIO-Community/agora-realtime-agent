@@ -1,0 +1,8 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "agora-agent-pipeline",
+  "homepage": "https://github.com/AgoraIO/agora-agent-pipeline",
+  "include": [
+    "registry/default/voice-ring-button/registry.json"
+  ]
+}

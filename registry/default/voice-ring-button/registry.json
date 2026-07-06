@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "voice-ring-button",
+      "type": "registry:ui",
+      "title": "Voice Ring Button",
+      "description": "A canvas-rendered dual-channel voice ring button with a Web Audio voice meter hook.",
+      "files": [
+        {
+          "path": "../../../packages/agora-realtime-react/src/components/voice-ring-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/voice-ring-button.tsx"
+        },
+        {
+          "path": "../../../packages/agora-realtime-react/src/use-voice-meter.ts",
+          "type": "registry:hook",
+          "target": "@hooks/use-voice-meter.ts"
+        }
+      ],
+      "categories": [
+        "voice",
+        "realtime",
+        "agent"
+      ]
+    }
+  ]
+}

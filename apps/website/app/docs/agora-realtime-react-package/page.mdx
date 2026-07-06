@@ -1,0 +1,89 @@
+# Agora Realtime React package
+
+`agora-realtime-react` is the standalone React package we intend to publish for Agora-powered realtime agent experiences.
+
+The website and the agent pipeline template are consumers of the package. They should demonstrate how the SDK feels in a real app, but the reusable product boundary is the npm package.
+
+## Install target
+
+After the package is published, app developers should be able to install it directly:
+
+```bash
+npm install agora-realtime-react
+```
+
+The package exports:
+
+```tsx
+import {
+  VoiceRingButton,
+  microphoneCompatibilityWarning,
+  useAgoraRealtime,
+  useVoiceMeter,
+} from 'agora-realtime-react';
+```
+
+## What it does
+
+Use the package when you want a React app to join an Agora RTC session and talk to an Agora AI agent without building the browser media layer yourself.
+
+It owns:
+
+1. Browser-side Agora RTC session lifecycle through `useAgoraRealtime`.
+2. A React-friendly state model for status, messages, events, capture state, playback state, and debug traces.
+3. Microphone and remote-agent voice level analysis through `useVoiceMeter`.
+4. A reusable dual-channel `VoiceRingButton` for human and AI voice activity.
+5. Typed setup contracts between the browser and your server routes.
+
+The package does not own Agora credentials or ConvoAI startup. Those stay on your server. The template shows one Next.js implementation of that server boundary.
+
+## Relationship to Vercel AI SDK
+
+Vercel AI SDK is the broader TypeScript toolkit for AI applications. Its React package includes `experimental_useRealtime`, which provides a normalized realtime hook around AI SDK realtime sessions.
+
+`agora-realtime-react` follows a similar product shape where that helps React developers:
+
+- React API style: both expose hook state such as status, messages, events, capture state, playback state, and controls.
+- Realtime transport: Vercel AI SDK realtime uses an AI SDK realtime provider session; `agora-realtime-react` uses an Agora Web SDK RTC media session.
+- Audio path: AI SDK realtime sends audio events through the AI SDK session; `agora-realtime-react` publishes microphone audio directly to Agora RTC.
+- Agent runtime: AI SDK realtime is provider-model driven; `agora-realtime-react` is designed for Agora ConvoAI / AI Studio pipelines.
+- Server role: AI SDK realtime usually needs token or session creation; `agora-realtime-react` needs RTC token generation plus ConvoAI join/leave.
+
+So the relationship is compatibility of mental model, not protocol equivalence.
+
+`useAgoraRealtime` is not a drop-in provider for `experimental_useRealtime`, and it is not trying to make AI SDK speak Agora RTC. The package gives React developers an AI-SDK-like frontend experience while keeping the media plane on Agora.
+
+## What you can build with it
+
+- A voice-first AI agent app that uses Agora RTC for low-latency browser audio.
+- A customer-support, tutoring, interview, sales, or concierge agent UI.
+- A public demo page that shows agent voice UI from sample audio without consuming live Agora quota.
+- A product-specific Next.js, Remix, or React app that keeps its own server routes but reuses the Agora realtime client runtime.
+- A design-system installation path where teams consume only `VoiceRingButton` and `useVoiceMeter` through shadcn.
+
+## Package boundary
+
+Keep these responsibilities in the package:
+
+- typed React hooks;
+- browser RTC session control;
+- browser media and voice metering;
+- reusable voice UI primitives;
+- shared types for setup responses and runtime events.
+
+Keep these responsibilities outside the package:
+
+- Agora App Certificate storage;
+- ConvoAI pipeline creation and publishing;
+- app-specific server routes;
+- product-specific prompts, copy, layout, and workflow decisions;
+- Vercel project deployment.
+
+This boundary lets the same npm package power the hosted demo, the agent pipeline template, and future custom applications.
+
+## References
+
+- AI SDK docs: https://ai-sdk.dev/docs
+- AI SDK React realtime source in this repo install: `node_modules/@ai-sdk/react/src/use-realtime.ts`
+- Agora realtime hook: `packages/agora-realtime-react/src/use-agora-realtime.ts`
+- Package exports: `packages/agora-realtime-react/src/index.ts`

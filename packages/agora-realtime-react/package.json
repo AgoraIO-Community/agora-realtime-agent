@@ -1,0 +1,43 @@
+{
+  "name": "agora-realtime-react",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
+    "prebuild": "npm run clean",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "@ai-sdk/react": "4.0.9",
+    "agora-rtc-sdk-ng": "^4.24.5",
+    "ai": "7.0.8",
+    "react": "19.2.7"
+  },
+  "devDependencies": {
+    "@ai-sdk/react": "4.0.9",
+    "agora-rtc-sdk-ng": "^4.24.5",
+    "ai": "7.0.8",
+    "react": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}

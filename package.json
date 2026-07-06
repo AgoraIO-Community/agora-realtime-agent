@@ -1,0 +1,43 @@
+{
+  "name": "agora-agent-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "templates/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:sdk && npm --workspace agora-agent-pipeline-website run build && npm --workspace agora-agent-pipeline-template run build",
+    "build:sdk": "npm --workspace agora-realtime-react run build",
+    "build:website": "npm run build:sdk && npm --workspace agora-agent-pipeline-website run build",
+    "build:template": "npm run build:sdk && npm --workspace agora-agent-pipeline-template run build",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev:website": "npm --workspace agora-agent-pipeline-website run dev -- --port 3001",
+    "dev:template": "npm --workspace agora-agent-pipeline-template run dev"
+  },
+  "dependencies": {
+    "@ai-sdk/react": "4.0.9",
+    "agora-agents": "^2.4.0",
+    "ai": "7.0.8",
+    "next": "16.2.9",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "tsx": "4.22.4",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "postcss": "8.5.16"
+  }
+}
