@@ -1,9 +1,28 @@
 {
   "name": "agora-realtime-react",
   "version": "0.1.0",
+  "description": "React hooks and voice UI primitives for Agora realtime voice agents.",
   "private": false,
   "type": "module",
   "sideEffects": false,
+  "keywords": [
+    "agora",
+    "realtime",
+    "voice-ai",
+    "ai-agents",
+    "react",
+    "hooks",
+    "rtc"
+  ],
+  "homepage": "https://agora-realtime-agent.vercel.app/docs/agora-realtime-react-package",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/634750802/agora-realtime-agent.git",
+    "directory": "packages/agora-realtime-react"
+  },
+  "bugs": {
+    "url": "https://github.com/634750802/agora-realtime-agent/issues"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
