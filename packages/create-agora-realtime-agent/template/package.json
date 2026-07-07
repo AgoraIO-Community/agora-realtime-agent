@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "build:website": "npm run build"
   },
   "dependencies": {
     "@ai-sdk/react": "4.0.9",

@@ -28,7 +28,7 @@ const deployChecklist = [
   'Deploy the Vercel template with AGORA_APP_ID, AGORA_APP_CERTIFICATE, and AGORA_CONVOAI_PIPELINE_ID.',
 ];
 
-const deployButtonUrl = 'https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent&root-directory=templates%2Fagora-agent-pipeline&project-name=agora-voice-agent&repository-name=agora-voice-agent&env=AGORA_APP_ID%2CAGORA_APP_CERTIFICATE%2CAGORA_CONVOAI_PIPELINE_ID&envDescription=Agora+App+ID%2C+App+Certificate%2C+and+Agora+AI+Studio+%2F+ConvoAI+pipeline+ID+for+the+realtime+voice-agent+template.&envLink=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent%2Ftree%2Fmain%2Ftemplates%2Fagora-agent-pipeline%23setup&demo-title=Agora+Voice+Agents+Demo&demo-description=Realtime+voice+agent+demo+built+with+Agora+Voice+Agents+and+an+Agora+ConvoAI+pipeline.&demo-url=https%3A%2F%2Fagora-voice-agents-demo.vercel.app';
+const deployButtonUrl = 'https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent%2Ftree%2Fmain%2Ftemplates%2Fagora-agent-pipeline&project-name=agora-voice-agent&repository-name=agora-voice-agent&env=AGORA_APP_ID%2CAGORA_APP_CERTIFICATE%2CAGORA_CONVOAI_PIPELINE_ID&envDescription=Agora+App+ID%2C+App+Certificate%2C+and+Agora+AI+Studio+%2F+ConvoAI+pipeline+ID+for+the+realtime+voice-agent+template.&envLink=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent%2Ftree%2Fmain%2Ftemplates%2Fagora-agent-pipeline%23setup&demo-title=Agora+Voice+Agents+Demo&demo-description=Realtime+voice+agent+demo+built+with+Agora+Voice+Agents+and+an+Agora+ConvoAI+pipeline.&demo-url=https%3A%2F%2Fagora-voice-agents-demo.vercel.app';
 
 const uiChecklist = [
   'Install the registry item with shadcn.',
