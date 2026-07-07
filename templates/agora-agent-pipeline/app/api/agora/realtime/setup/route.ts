@@ -1,5 +1,14 @@
 import { randomUUID } from 'node:crypto';
-import { Agent, AgoraClient, Area, ExpiresIn, generateConvoAIToken } from 'agora-agents';
+import {
+  Agent,
+  AgoraClient,
+  Area,
+  DeepgramSTT,
+  ExpiresIn,
+  generateConvoAIToken,
+  MiniMaxTTS,
+  OpenAI,
+} from 'agora-agents';
 import type { Experimental_RealtimeSessionConfig as RealtimeSessionConfig } from 'ai';
 import { NextResponse } from 'next/server';
 import type { AgoraRealtimeSetupResponse } from 'agora-realtime-react';
@@ -55,6 +64,33 @@ function clientFor(appId: string, appCertificate: string): AgoraClient {
   return new AgoraClient({ appId, appCertificate, area: Area.US });
 }
 
+function agentFor(input: { client: AgoraClient; openAiApiKey?: string; pipelineId: string }): Agent {
+  if (input.openAiApiKey) {
+    return new Agent({ client: input.client, turnDetection: { language: 'en-US' } })
+      .withStt(new DeepgramSTT({ model: 'nova-3', language: 'en' }))
+      .withLlm(new OpenAI({
+        apiKey: input.openAiApiKey,
+        url: 'https://api.openai.com/v1/chat/completions',
+        model: 'gpt-4o-mini',
+        systemMessages: [
+          {
+            role: 'system',
+            content: 'You are a concise, friendly voice demo assistant for Agora Voice Agents.',
+          },
+        ],
+        greetingMessage: 'Hi, this is the Agora voice demo. How can I help?',
+        failureMessage: 'Please wait a moment.',
+        params: {
+          max_tokens: 512,
+          temperature: 0.6,
+        },
+      }))
+      .withTts(new MiniMaxTTS({ model: 'speech_2_6_turbo', voiceId: 'English_captivating_female1' }));
+  }
+
+  return new Agent({ client: input.client, pipelineId: input.pipelineId });
+}
+
 export async function POST(request: Request) {
   configureNodeFetchProxy();
   const body = await request.json().catch(() => ({})) as SetupBody;
@@ -106,7 +142,7 @@ export async function POST(request: Request) {
       ?? stringValue(config.pipelineId)
       ?? env(DEFAULT_AGENT_PIPELINE_ID_ENV)
       ?? DEFAULT_AGENT_PIPELINE_ID;
-    const agent = new Agent({ client, pipelineId });
+    const agent = agentFor({ client, pipelineId, openAiApiKey: env('OPENAI_API_KEY') });
     const session = agent.createSession({
       name: `${channel}-${trace_id}`,
       channel,

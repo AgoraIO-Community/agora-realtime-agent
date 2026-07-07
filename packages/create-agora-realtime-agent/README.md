@@ -50,6 +50,6 @@ After creation:
 ```bash
 cd my-agent
 cp .env.example .env.local
-# Fill AGORA_APP_ID, AGORA_APP_CERTIFICATE, and AGORA_CONVOAI_PIPELINE_ID
+# Fill AGORA_APP_ID, AGORA_APP_CERTIFICATE, and OPENAI_API_KEY
 npm run dev
 ```
