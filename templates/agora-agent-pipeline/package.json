@@ -26,5 +26,17 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "typescript": "5.9.3"
-  }
+  },
+  "description": "AI SDK-compatible Agora WebRTC voice agent template for Vercel.",
+  "keywords": [
+    "agora",
+    "vercel",
+    "voice-agent",
+    "realtime-voice",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "webrtc",
+    "convoai",
+    "nextjs"
+  ]
 }

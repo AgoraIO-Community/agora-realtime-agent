@@ -6,6 +6,10 @@ const pipelineSteps = [
     text: 'The browser joins an Agora RTC channel directly. ConvoAI or an AI Studio pipeline joins the same channel as the agent.',
   },
   {
+    label: 'AI SDK-compatible React layer',
+    text: 'useAgoraRealtime follows the AI SDK realtime hook shape for status, messages, events, controls, and session config while Agora RTC remains the media path.',
+  },
+  {
     label: 'Vercel app boundary',
     text: 'Next.js routes on Vercel mint the RTC token, start the agent, and keep the Agora App Certificate on the server.',
   },
@@ -17,6 +21,7 @@ const pipelineSteps = [
 
 const packageFeatures = [
   'useAgoraRealtime for Agora RTC session state in React',
+  'AI SDK Realtime-compatible status, UIMessage, and sessionConfig types',
   'typed setup responses for Vercel server routes',
   'useVoiceMeter for microphone and remote audio levels',
   'VoiceRingButton for human and AI voice activity',
@@ -70,6 +75,7 @@ export default function HomePage() {
         <nav className="nav-links">
           <a href="#stack">Stack</a>
           <a href="#package">Package</a>
+          <a href="/docs/use-with-vercel-ai-sdk">AI SDK</a>
           <a href="#deploy">Deploy</a>
           <a href="#ui">UI</a>
           <a href="#resources">Resources</a>
@@ -78,10 +84,10 @@ export default function HomePage() {
 
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">Agora realtime voice, shipped as a Vercel app</p>
+          <p className="eyebrow">AI SDK-compatible WebRTC voice, shipped as a Vercel app</p>
           <h1 id="hero-title">Build Agora Voice Agents for Vercel.</h1>
           <p className="hero-lede">
-            Agora handles the live voice channel and ConvoAI agent. Vercel hosts the React app, server routes, and deployment flow. This repo gives you the SDK, template, and voice UI to connect both sides.
+            Agora handles the live WebRTC channel and ConvoAI agent. Vercel hosts the React app, server routes, and deployment flow. This repo gives AI SDK-shaped hooks, a deployable template, and voice UI to connect both sides.
           </p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="primary-cta" href={deployButtonUrl} rel="noreferrer" target="_blank">
@@ -108,11 +114,11 @@ export default function HomePage() {
       <section className="template-section" id="package">
         <div>
           <p className="eyebrow">NPM package</p>
-          <h2>React runtime for Agora agents in Vercel apps.</h2>
+          <h2>React runtime for AI SDK-compatible Agora agents in Vercel apps.</h2>
         </div>
         <div className="package-copy">
           <p>
-            <code>agora-realtime-react</code> gives the browser a clean React API for Agora RTC. Your Vercel route owns credentials, token generation, and ConvoAI startup.
+            <code>agora-realtime-react</code> gives the browser a clean React API for Agora RTC with AI SDK Realtime-compatible types. Your Vercel route owns credentials, token generation, and ConvoAI startup.
           </p>
           <ul className="package-list">
             {packageFeatures.map((feature) => <li key={feature}>{feature}</li>)}

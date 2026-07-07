@@ -5,7 +5,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Agora Voice Agents for Vercel',
-  description: 'Build Agora-powered realtime voice agents with a Vercel-hosted React app, server routes, npm SDK, and shadcn voice UI.',
+  description: 'Build AI SDK-compatible Agora WebRTC voice agents with Vercel server routes, React hooks, a deployable template, and shadcn voice UI.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

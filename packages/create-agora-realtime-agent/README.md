@@ -2,7 +2,7 @@
 
 [![Agora Voice Agents for Vercel](https://agora-realtime-agent.vercel.app/api/badges/npm-homepage.svg?pkg=create-agora-realtime-agent)](https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=readme-badge&utm_campaign=agora_voice_agents)
 
-Create an Agora-powered voice agent app for Vercel from the official template.
+Create an AI SDK-compatible Agora WebRTC voice agent app for Vercel from the official template.
 
 Homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=readme&utm_campaign=agora_voice_agents)
 
@@ -41,7 +41,7 @@ npm create agora-realtime-agent@latest my-agent -- --no-install
 
 ## Generated app
 
-The generated app is a Vercel-ready Next.js app that keeps Agora credentials on the server and uses `agora-realtime-react` in the browser.
+The generated app is a Vercel-ready Next.js app that keeps Agora credentials on the server and uses AI SDK-compatible `agora-realtime-react` hooks in the browser.
 
 It links back to the [project homepage](https://agora-realtime-agent.vercel.app/?utm_source=create-agora-realtime-agent&utm_medium=generated-template&utm_campaign=agora_voice_agents) so teams can track template adoption.
 

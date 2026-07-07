@@ -1,0 +1,78 @@
+# Use Agora with Vercel AI SDK realtime
+
+Use this guide when your audience already knows Vercel AI SDK realtime and wants a Vercel app that uses Agora WebRTC and ConvoAI for the live voice path.
+
+## Positioning
+
+`agora-realtime-react` is AI SDK-compatible, not a drop-in replacement for `experimental_useRealtime`.
+
+That means:
+
+- the package imports the experimental realtime types from `ai` and `@ai-sdk/react`;
+- `useAgoraRealtime` returns the same broad hook shape as `Experimental_UseRealtimeReturn`: status, messages, events, capture/playback state, and controls;
+- `sessionConfig` accepts `Experimental_RealtimeSessionConfig` fields and maps them into Agora ConvoAI session setup where applicable;
+- messages use AI SDK `UIMessage` types so app code can stay close to AI SDK UI patterns.
+
+It does **not** mean:
+
+- `experimental_useRealtime({ model })` can use Agora as a native AI SDK provider today;
+- Agora RTC replaces the AI SDK hook's provider WebSocket internally;
+- the package exposes `agora.experimental_realtime(...)` as an AI SDK model provider.
+
+## Why pair them
+
+Vercel AI SDK gives React and TypeScript developers familiar UI contracts for AI apps. Agora gives browser voice agents a production RTC media path:
+
+1. The browser joins an Agora RTC channel with a scoped token.
+2. A Vercel route keeps the Agora App Certificate server-side.
+3. The same route starts a published Agora AI Studio / ConvoAI pipeline.
+4. The agent joins the channel, subscribes to microphone audio, and publishes speech back to the browser.
+
+This split is useful when you want an AI SDK-shaped React API but need WebRTC media, Agora token control, and ConvoAI runtime behavior.
+
+## React usage
+
+```tsx
+import { useAgoraRealtime } from 'agora-realtime-react';
+
+export function VoiceAgent() {
+  const realtime = useAgoraRealtime({
+    api: {
+      setup: '/api/agora/realtime/setup',
+      end: '/api/agora/realtime/end',
+    },
+    sessionConfig: {
+      instructions: 'Speak concisely and ask one question at a time.',
+      outputModalities: ['audio', 'text'],
+      inputAudioFormat: { type: 'audio/pcm', rate: 24000, channels: 1 },
+      outputAudioFormat: { type: 'audio/pcm', rate: 24000, channels: 1 },
+    },
+  });
+
+  return (
+    <button onClick={() => realtime.connect()} disabled={realtime.status === 'connecting'}>
+      {realtime.status === 'connected' ? 'Connected' : 'Start voice agent'}
+    </button>
+  );
+}
+```
+
+## Server setup route
+
+The template implements the server boundary in `app/api/agora/realtime/setup/route.ts`:
+
+```env
+AGORA_APP_ID=...
+AGORA_APP_CERTIFICATE=...
+AGORA_CONVOAI_PIPELINE_ID=...
+```
+
+The setup route returns the typed Agora payload expected by the hook: RTC App ID, channel, UID, RTC token, session ID, trace ID, and agent metadata. The browser never receives the App Certificate.
+
+## When to build a full AI SDK adapter
+
+If you need to submit a native AI SDK community provider or make this work directly through `experimental_useRealtime({ model })`, add an explicit adapter layer first. Until then, use the accurate public wording:
+
+> AI SDK-compatible React hooks and Vercel templates for Agora WebRTC voice agents.
+
+Avoid claiming that Agora is already a native AI SDK realtime transport/provider unless that adapter exists and is tested against the current experimental AI SDK API.

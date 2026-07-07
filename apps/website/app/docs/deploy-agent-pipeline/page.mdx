@@ -16,7 +16,7 @@ The browser never receives your Agora App Certificate. The template's server rou
 
 ## Quick start with npm create
 
-After the scaffold package is published, create a fresh app from the template:
+Create a fresh app from the published scaffold package:
 
 ```bash
 npm create agora-realtime-agent@latest my-agent
@@ -93,16 +93,24 @@ Open `http://localhost:3000`. Localhost is treated as a secure context by browse
 
 ## 4. Deploy the template on Vercel
 
-Import the repository into Vercel as a separate monorepo project for the agent template.
+The fastest path is the hosted Deploy Button:
 
-The repository's main `vercel.json` is used for the public website and docs. For an agent deployment, create a separate Vercel project and configure it to build the template:
+[Deploy to Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent%2Ftree%2Fmain%2Ftemplates%2Fagora-agent-pipeline&project-name=agora-voice-agent&repository-name=agora-voice-agent&env=AGORA_APP_ID%2CAGORA_APP_CERTIFICATE%2CAGORA_CONVOAI_PIPELINE_ID&envDescription=Agora+App+ID%2C+App+Certificate%2C+and+Agora+AI+Studio+%2F+ConvoAI+pipeline+ID+for+the+realtime+voice-agent+template.&envLink=https%3A%2F%2Fgithub.com%2FAgoraIO-Community%2Fagora-realtime-agent%2Ftree%2Fmain%2Ftemplates%2Fagora-agent-pipeline%23setup&demo-title=Agora+Voice+Agents+Demo&demo-description=Realtime+voice+agent+demo+built+with+Agora+Voice+Agents+and+an+Agora+ConvoAI+pipeline.&demo-url=https%3A%2F%2Fagora-voice-agents-demo.vercel.app)
+
+The button points directly at the GitHub subdirectory `templates/agora-agent-pipeline` instead of the monorepo root. That matters because the root `vercel.json` builds the marketing website, while the template has its own local `vercel.json`:
 
 ```json
 {
-  "installCommand": "npm ci",
-  "buildCommand": "npm --workspace agora-agent-pipeline-template run build",
-  "outputDirectory": "templates/agora-agent-pipeline/.next"
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next"
 }
+```
+
+If you import manually, import this subdirectory URL as the template source:
+
+```text
+https://github.com/AgoraIO-Community/agora-realtime-agent/tree/main/templates/agora-agent-pipeline
 ```
 
 Add these Vercel environment variables for Production and Preview:

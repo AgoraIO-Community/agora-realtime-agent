@@ -1,7 +1,7 @@
 {
   "name": "create-agora-realtime-agent",
   "version": "0.1.1",
-  "description": "Create an Agora-powered voice agent app for Vercel from the official template.",
+  "description": "Create an AI SDK-compatible Agora WebRTC voice agent app for Vercel from the official template.",
   "type": "module",
   "homepage": "https://agora-realtime-agent.vercel.app/",
   "repository": {
@@ -16,6 +16,13 @@
     "agora",
     "vercel",
     "voice-ai",
+    "voice-agent",
+    "realtime-voice",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "useRealtime",
+    "webrtc",
+    "convoai",
     "realtime",
     "create",
     "template"

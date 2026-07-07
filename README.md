@@ -1,6 +1,6 @@
 # Agora Voice Agents for Vercel
 
-Reference implementation for building Agora-powered realtime voice agents on Vercel. The repo includes a React npm package, a Vercel-ready Next.js template, a public demo site, and a shadcn voice UI component.
+AI SDK-compatible reference implementation for building Agora WebRTC voice agents on Vercel. The repo includes a React npm package, a Vercel-ready Next.js template, a public demo site, and a shadcn voice UI component.
 
 Homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=github&utm_medium=readme&utm_campaign=agora_voice_agents)
 
@@ -37,14 +37,34 @@ Agora RTC channel + ConvoAI
 
 Agora owns the realtime media and agent runtime. Vercel owns the web app, API routes, environment variables, and deployment flow. The browser never sees the App Certificate.
 
-`packages/agora-realtime-react` exports `useAgoraRealtime`, `useVoiceMeter`, and the reusable `VoiceRingButton` UI primitive. The package gives Vercel apps a React API for Agora RTC while keeping credentials, token generation, and ConvoAI setup on the server.
+`packages/agora-realtime-react` exports `useAgoraRealtime`, `useVoiceMeter`, and the reusable `VoiceRingButton` UI primitive. The package gives Vercel apps an AI SDK-compatible React API for Agora RTC while keeping credentials, token generation, and ConvoAI setup on the server.
+
+## Relationship to Vercel AI SDK
+
+This project is designed for Vercel AI SDK developers, but the current package is intentionally scoped as **AI SDK-compatible** rather than a native AI SDK realtime provider.
+
+What is compatible today:
+
+- `useAgoraRealtime` follows the AI SDK realtime hook shape for status, messages, events, capture/playback state, and controls.
+- The package imports AI SDK experimental realtime types from `ai` and `@ai-sdk/react`.
+- `sessionConfig` accepts AI SDK-shaped realtime config and maps supported fields into Agora ConvoAI setup.
+- Messages use AI SDK `UIMessage` types so app code stays close to AI SDK UI conventions.
+
+What is not claimed yet:
+
+- no native `experimental_useRealtime({ model: agora.experimental_realtime(...) })` provider;
+- no hidden replacement of the AI SDK provider WebSocket with Agora RTC;
+- no full AI SDK community provider adapter until that layer is implemented and tested.
+
+Short public wording: **AI SDK-compatible React hooks and Vercel templates for Agora WebRTC voice agents.**
+
 
 ## Requirements
 
 - Repository development uses Node.js `>=24.0.0` and npm `11.x` as declared in `package.json`.
 - Consumer React apps can use `agora-realtime-react` with React `^18.3.0` or `^19.0.0`; the package must not pin a single React patch release.
 - The shadcn path assumes a normal npm app with shadcn initialized, for example `create-next-app --use-npm` followed by `npx shadcn@latest init -d`.
-- Google Analytics is optional for the public website. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel when the GA4 Measurement ID is available; leave it empty to disable analytics.
+- Google Analytics is optional for the public website. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel for production tracking; leave it empty to disable analytics.
 - Live agent demos require server-only Agora credentials: `AGORA_APP_ID`, `AGORA_APP_CERTIFICATE`, and `AGORA_CONVOAI_PIPELINE_ID`.
 - Microphone capture requires HTTPS in production, or `http://localhost` during local development.
 
@@ -64,7 +84,7 @@ registry/
 
 ## Create a new agent app
 
-After `create-agora-realtime-agent` is published, developers can scaffold the Vercel-ready template with npm:
+`create-agora-realtime-agent` is published. Scaffold the Vercel-ready template with npm:
 
 ```bash
 npm create agora-realtime-agent@latest my-agent
@@ -117,5 +137,6 @@ npm run dev:template
 ## Documentation map
 
 - [`apps/website/app/docs/agora-realtime-react-package/page.mdx`](./apps/website/app/docs/agora-realtime-react-package/page.mdx) — React package for using Agora RTC from a Vercel app.
+- [`apps/website/app/docs/use-with-vercel-ai-sdk/page.mdx`](./apps/website/app/docs/use-with-vercel-ai-sdk/page.mdx) — explain the current AI SDK-compatible boundary and future adapter path.
 - [`apps/website/app/docs/deploy-agent-pipeline/page.mdx`](./apps/website/app/docs/deploy-agent-pipeline/page.mdx) — deploy an Agora AI Studio pipeline through the Vercel template.
 - [`apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx`](./apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx) — install the Agora voice ring UI through the shadcn registry endpoint.

@@ -1,6 +1,6 @@
 # Agora Realtime React package
 
-`agora-realtime-react` is the React package for building Agora Voice Agents for Vercel and React apps.
+`agora-realtime-react` is the AI SDK-compatible React package for building Agora WebRTC Voice Agents in Vercel and React apps.
 
 The package handles the browser side of the stack: Agora RTC join/leave, session state, microphone capture, remote audio, voice meters, and the voice ring UI. Your Vercel route handles the server side: App Certificate storage, RTC token generation, and ConvoAI startup.
 
@@ -15,9 +15,9 @@ npm install agora-realtime-react
 ## Requirements
 
 - React `^18.3.0` or `^19.0.0`. The package should stay compatible with normal `create-next-app` React versions instead of pinning one React patch release.
-- npm or another package manager that installs peer dependencies. If peers are not installed automatically, add `agora-rtc-sdk-ng`, `@ai-sdk/react@4.0.9`, and `ai@7.0.8` in the app.
+- npm or another package manager that installs peer dependencies. If peers are not installed automatically, add `agora-rtc-sdk-ng`, `@ai-sdk/react@4.0.9`, and `ai@7.0.8` in the app. The AI SDK packages provide experimental realtime types and UI message contracts.
 - A server route that can mint Agora RTC tokens and start/end the ConvoAI or AI Studio agent. The browser must never receive the Agora App Certificate.
-- Optional website analytics use `NEXT_PUBLIC_GA_MEASUREMENT_ID`; leave it unset until the GA4 Measurement ID is available.
+- Optional website analytics use `NEXT_PUBLIC_GA_MEASUREMENT_ID`; leave it unset to disable analytics.
 - A secure browser context for microphone capture: HTTPS in production, or `http://localhost` for local development.
 - For the Vercel / Next.js example path, use a current Node.js runtime compatible with Next.js and shadcn CLI. This repo itself uses Node.js `>=24.0.0`.
 
@@ -61,6 +61,8 @@ The browser receives a scoped RTC token, channel name, UID, and agent metadata. 
 
 Vercel AI SDK is the broader TypeScript toolkit for AI applications. `agora-realtime-react` does not replace it and does not make AI SDK speak Agora RTC.
 
+The package is AI SDK-compatible in the narrow, testable sense: it reuses AI SDK experimental realtime types, accepts AI SDK-shaped session config, returns a hook shape aligned with `Experimental_UseRealtimeReturn`, and keeps messages close to `UIMessage`. It is not yet a native provider for `experimental_useRealtime({ model })`.
+
 The overlap is developer ergonomics. React developers get a hook-shaped API with familiar state and controls, while Agora remains the media and agent runtime:
 
 - React API: hook state for status, messages, events, capture, playback, and controls.
@@ -103,6 +105,7 @@ This boundary lets the same npm package power the hosted demo, the Vercel templa
 - Agora Docs (English): https://docs.agora.io/en/
 - Agora realtime voice docs: https://docs.agora.io/en/realtime-media/voice
 - Agora AI and Conversational AI docs: https://docs.agora.io/en/ai
+- Use with Vercel AI SDK: `/docs/use-with-vercel-ai-sdk`
 - Vercel AI SDK docs: https://ai-sdk.dev/docs
 - Vercel environment variables: https://vercel.com/docs/environment-variables
 - Agora realtime hook: `packages/agora-realtime-react/src/use-agora-realtime.ts`
