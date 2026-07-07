@@ -37,7 +37,7 @@ function printSuccess(result) {
   }
 
   console.log('  cp .env.example .env.local');
-  console.log('  # Fill AGORA_APP_ID, AGORA_APP_CERTIFICATE, and OPENAI_API_KEY');
+  console.log('  # Fill AGORA_APP_ID, AGORA_APP_CERTIFICATE, and AGORA_CONVOAI_PIPELINE_ID');
   console.log('  npm run dev\n');
 }
 

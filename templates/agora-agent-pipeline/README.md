@@ -15,8 +15,7 @@ Official Agora resources:
 
 - Node.js compatible with Next.js 16. This template is tested from Node.js `>=20.9.0`; the source repo uses Node.js `>=24.0.0`.
 - npm.
-- Agora credentials for live agent sessions.
-- An OpenAI API key for the default BYOK demo path, or an Agora AI Studio / ConvoAI pipeline ID.
+- Agora credentials and an Agora AI Studio / ConvoAI pipeline ID for live agent sessions.
 
 ## Setup
 
@@ -30,9 +29,6 @@ Fill `.env.local`:
 ```env
 AGORA_APP_ID=
 AGORA_APP_CERTIFICATE=
-OPENAI_API_KEY=
-
-# Optional: use an Agora AI Studio / ConvoAI pipeline instead of the default BYOK path.
 AGORA_CONVOAI_PIPELINE_ID=
 ```
 
@@ -47,6 +43,6 @@ Open `http://localhost:3000`.
 ## Runtime boundary
 
 - The browser joins Agora RTC using a scoped token from the server route.
-- `app/api/agora/realtime/setup` mints the RTC token and starts the agent. If `OPENAI_API_KEY` is set, the route uses the default BYOK STT/LLM/TTS demo stack; otherwise it falls back to `AGORA_CONVOAI_PIPELINE_ID` / `agent.config.json`.
+- `app/api/agora/realtime/setup` mints the RTC token and starts the ConvoAI / AI Studio pipeline agent.
 - `app/api/agora/realtime/end` stops the agent when the session ends.
 - Never expose `AGORA_APP_CERTIFICATE` to the browser.
