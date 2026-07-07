@@ -6,11 +6,11 @@
   "homepage": "https://agora-realtime-agent.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/634750802/agora-realtime-agent.git",
+    "url": "git+https://github.com/AgoraIO-Community/agora-realtime-agent.git",
     "directory": "packages/create-agora-realtime-agent"
   },
   "bugs": {
-    "url": "https://github.com/634750802/agora-realtime-agent/issues"
+    "url": "https://github.com/AgoraIO-Community/agora-realtime-agent/issues"
   },
   "keywords": [
     "agora",
