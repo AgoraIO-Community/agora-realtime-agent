@@ -5,7 +5,7 @@ export const registryCatalog = {
     {
       categories: ['voice', 'realtime', 'agent', 'vercel'],
       description: 'A canvas-rendered voice ring button for Agora voice agents in Vercel and React apps.',
-      docs: 'Install with `npx shadcn@latest add https://agora-realtime-agent.vercel.app/r/voice-ring-button.json`, then import `VoiceRingButton` and `useVoiceMeter` from your shadcn aliases. Homepage: https://agora-realtime-agent.vercel.app/?utm_source=shadcn-registry&utm_medium=registry-item-docs&utm_campaign=agora_voice_agents',
+      docs: 'Install with `npx shadcn@latest add https://agora-realtime-agent.vercel.app/r/voice-ring-button.json`, then import `VoiceRingButton` and `useVoiceMeter` from your shadcn aliases. Homepage: https://agora-realtime-agent.vercel.app/?utm_source=shadcn-registry&utm_medium=registry-item-docs&utm_campaign=agora_voice_agents. Official Agora docs: https://docs.agora.io/en/',
       files: [
         {
           path: 'packages/agora-realtime-react/src/components/voice-ring-button.tsx',

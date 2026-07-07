@@ -4,6 +4,13 @@ This app was generated from the Agora realtime voice agent template.
 
 Project homepage: https://agora-realtime-agent.vercel.app/?utm_source=create-agora-realtime-agent&utm_medium=generated-template&utm_campaign=agora_voice_agents
 
+Official Agora resources:
+
+- Agora: https://www.agora.io/en/
+- Agora Docs (English): https://docs.agora.io/en/
+- Agora realtime voice docs: https://docs.agora.io/en/realtime-media/voice
+- Agora AI and Conversational AI docs: https://docs.agora.io/en/ai
+
 ## Requirements
 
 - Node.js compatible with Next.js 16. This template is tested from Node.js `>=20.9.0`; the source repo uses Node.js `>=24.0.0`.

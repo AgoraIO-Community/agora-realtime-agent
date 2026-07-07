@@ -34,6 +34,29 @@ const uiChecklist = [
   'Feed human and AI levels from useVoiceMeter or your own audio analysis.',
 ];
 
+const officialResources = [
+  {
+    href: 'https://www.agora.io/en/',
+    label: 'Agora',
+    text: 'Official Agora homepage for realtime engagement and AI products.',
+  },
+  {
+    href: 'https://docs.agora.io/en/',
+    label: 'Agora Docs',
+    text: 'English documentation hub for Agora product setup, SDKs, and APIs.',
+  },
+  {
+    href: 'https://docs.agora.io/en/realtime-media/voice',
+    label: 'Realtime voice docs',
+    text: 'Voice calling docs for the RTC media layer used by browser sessions.',
+  },
+  {
+    href: 'https://docs.agora.io/en/ai',
+    label: 'AI and Conversational AI docs',
+    text: 'Agora AI docs for agent pipelines, model configuration, and runtime concepts.',
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="site-shell">
@@ -47,6 +70,7 @@ export default function HomePage() {
           <a href="#package">Package</a>
           <a href="#deploy">Deploy</a>
           <a href="#ui">UI</a>
+          <a href="#resources">Resources</a>
         </nav>
       </header>
 
@@ -120,6 +144,24 @@ AGORA_CONVOAI_PIPELINE_ID=...`}</code></pre>
   https://agora-realtime-agent.vercel.app/r/voice-ring-button.json`}</code></pre>
           <a className="text-link" href="/docs/install-voice-ring-with-shadcn">Read shadcn guide</a>
         </article>
+      </section>
+
+      <section className="official-resources" id="resources" aria-labelledby="resources-title">
+        <div className="resource-heading">
+          <p className="eyebrow">Official references</p>
+          <h2 id="resources-title">Build against Agora's English docs.</h2>
+          <p>
+            This project packages the Vercel and React path. Use Agora's official site and English documentation for product setup, RTC behavior, and AI agent configuration details.
+          </p>
+        </div>
+        <div className="resource-grid">
+          {officialResources.map((resource) => (
+            <a className="resource-card" href={resource.href} key={resource.href} rel="noreferrer" target="_blank">
+              <span>{resource.label}</span>
+              <p>{resource.text}</p>
+            </a>
+          ))}
+        </div>
       </section>
     </main>
   );

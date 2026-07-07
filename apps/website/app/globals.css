@@ -466,6 +466,67 @@ h1 {
   color: #a7f6ff;
 }
 
+.official-resources {
+  border-top: 1px solid rgba(244, 239, 228, 0.12);
+  display: grid;
+  gap: clamp(1rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 4rem clamp(1rem, 4vw, 2rem) 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.resource-heading {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.resource-heading h2 {
+  font-size: clamp(1.9rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.resource-heading p:not(.eyebrow) {
+  color: rgba(244, 239, 228, 0.72);
+  font-size: 1rem;
+  line-height: 1.68;
+}
+
+.resource-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resource-card {
+  border: 1px solid var(--site-border);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.7rem;
+  min-height: 9.5rem;
+  padding: 1rem;
+}
+
+.resource-card:hover {
+  background: rgba(244, 239, 228, 0.06);
+  border-color: rgba(76, 238, 255, 0.34);
+}
+
+.resource-card span {
+  color: var(--site-cyan);
+  font-size: 0.84rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.resource-card p {
+  color: rgba(244, 239, 228, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.58;
+}
+
 .docs-shell {
   min-height: 100svh;
   overflow-x: hidden;
@@ -751,12 +812,17 @@ h1 {
   .template-section,
   .journey-section,
   .docs-layout,
-  .voice-doc-preview {
+  .voice-doc-preview,
+  .official-resources {
     grid-template-columns: 1fr;
   }
 
   .pipeline-section {
     padding-bottom: 3rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
   }
 
   .docs-sidebar {

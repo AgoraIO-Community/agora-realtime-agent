@@ -4,6 +4,13 @@ Reference implementation for building Agora realtime voice agents as Vercel apps
 
 Homepage: https://agora-realtime-agent.vercel.app/?utm_source=github&utm_medium=readme&utm_campaign=agora_voice_agents
 
+Official Agora resources:
+
+- Agora: https://www.agora.io/en/
+- Agora Docs (English): https://docs.agora.io/en/
+- Agora realtime voice docs: https://docs.agora.io/en/realtime-media/voice
+- Agora AI and Conversational AI docs: https://docs.agora.io/en/ai
+
 Research baseline: 2026-07-02.
 
 ## Current direction
