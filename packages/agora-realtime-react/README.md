@@ -6,7 +6,7 @@ React hooks and voice UI primitives for Agora voice agents running inside Vercel
 
 `agora-realtime-react` gives the browser a typed Agora RTC runtime, audio metering, and a reusable voice ring button. Pair it with Vercel or any server runtime that can mint Agora RTC tokens and start a ConvoAI or AI Studio pipeline.
 
-Homepage: https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme&utm_campaign=agora_voice_agents
+Homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme&utm_campaign=agora_voice_agents)
 
 ## Install
 
@@ -53,7 +53,7 @@ The package does not store Agora credentials and does not publish AI Studio pipe
 ## Docs
 
 - Package guide: https://agora-realtime-agent.vercel.app/docs/agora-realtime-react-package
-- Demo and Vercel template: https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme-docs&utm_campaign=agora_voice_agents
+- Demo and Vercel template: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme-docs&utm_campaign=agora_voice_agents)
 - Agora: https://www.agora.io/en/
 - Agora Docs (English): https://docs.agora.io/en/
 - Agora realtime voice docs: https://docs.agora.io/en/realtime-media/voice

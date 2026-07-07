@@ -1,9 +1,9 @@
 {
   "name": "create-agora-realtime-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create an Agora + Vercel realtime voice agent app from the official template.",
   "type": "module",
-  "homepage": "https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=package-homepage&utm_campaign=agora_voice_agents",
+  "homepage": "https://agora-realtime-agent.vercel.app/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/634750802/agora-realtime-agent.git",
@@ -21,7 +21,7 @@
     "template"
   ],
   "bin": {
-    "create-agora-realtime-agent": "./bin/create-agora-realtime-agent.js"
+    "create-agora-realtime-agent": "bin/create-agora-realtime-agent.js"
   },
   "files": [
     "bin",

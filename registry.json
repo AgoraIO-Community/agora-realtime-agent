@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "agora-vercel-voice-agents",
-  "homepage": "https://agora-realtime-agent.vercel.app/?utm_source=shadcn-registry&utm_medium=registry-catalog&utm_campaign=agora_voice_agents",
+  "homepage": "https://agora-realtime-agent.vercel.app/",
   "include": [
     "registry/default/voice-ring-button/registry.json"
   ]

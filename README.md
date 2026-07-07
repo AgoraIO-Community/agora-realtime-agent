@@ -2,7 +2,7 @@
 
 Reference implementation for building Agora realtime voice agents as Vercel apps. The repo includes a React npm package, a Vercel-ready Next.js template, a public demo site, and a shadcn voice UI component.
 
-Homepage: https://agora-realtime-agent.vercel.app/?utm_source=github&utm_medium=readme&utm_campaign=agora_voice_agents
+Homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=github&utm_medium=readme&utm_campaign=agora_voice_agents)
 
 Official Agora resources:
 

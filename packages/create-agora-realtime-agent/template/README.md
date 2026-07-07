@@ -2,7 +2,7 @@
 
 This app was generated from the Agora realtime voice agent template.
 
-Project homepage: https://agora-realtime-agent.vercel.app/?utm_source=create-agora-realtime-agent&utm_medium=generated-template&utm_campaign=agora_voice_agents
+Project homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=create-agora-realtime-agent&utm_medium=generated-template&utm_campaign=agora_voice_agents)
 
 Official Agora resources:
 
