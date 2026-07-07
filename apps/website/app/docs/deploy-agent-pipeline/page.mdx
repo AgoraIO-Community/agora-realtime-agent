@@ -1,16 +1,36 @@
-# Deploy an Agora agent pipeline
+# Deploy an Agora voice agent on Vercel
 
-This path is for users who want to run their own voice agent, not just preview the UI.
+Use this path when you want a live voice agent, not just the UI preview.
+
+Agora provides the realtime media channel and ConvoAI agent. Vercel hosts the React app and the server routes that mint RTC tokens and start the agent.
 
 ## What ships
 
 The deployed app has three moving parts:
 
-1. An Agora project with RTC enabled and an app certificate.
+1. An Agora project with RTC enabled and an App Certificate.
 2. A published Agora AI Studio / ConvoAI pipeline.
 3. The `agora-agent-pipeline-template` Next.js app deployed on Vercel.
 
-The browser never receives your Agora app certificate. The template's server route creates RTC tokens and starts the ConvoAI agent.
+The browser never receives your Agora App Certificate. The template's server route creates RTC tokens and starts the ConvoAI agent.
+
+## Quick start with npm create
+
+After the scaffold package is published, create a fresh app from the template:
+
+```bash
+npm create agora-realtime-agent@latest my-agent
+cd my-agent
+cp .env.example .env.local
+```
+
+Fill `.env.local` with `AGORA_APP_ID`, `AGORA_APP_CERTIFICATE`, and `AGORA_CONVOAI_PIPELINE_ID`, then run:
+
+```bash
+npm run dev
+```
+
+`npm init agora-realtime-agent@latest my-agent` and `npx create-agora-realtime-agent@latest my-agent` are equivalent. Use `-- --no-install` when you only want to copy the template.
 
 ## 1. Create the Agora project
 
@@ -21,7 +41,7 @@ In the Agora Console:
 3. Enable or copy the App Certificate for token generation.
 4. Confirm that the project can use RTC and Conversational AI / AI Studio features in the region you plan to use.
 
-You will deploy these values as server-side environment variables:
+You will deploy these values as Vercel server-side environment variables:
 
 ```bash
 AGORA_APP_ID=...
@@ -46,7 +66,7 @@ AGORA_CONVOAI_PIPELINE_ID=...
 
 The template passes this value to `agora-agents` as `pipelineId`. The setup route sends it to Agora as the top-level `pipeline_id`, so the published pipeline owns ASR, LLM, TTS, and turn detection defaults.
 
-## 3. Verify locally
+## 3. Verify locally from this repo
 
 Install dependencies and build the SDK:
 
@@ -98,9 +118,15 @@ Deploy. After deployment, open the Vercel URL and start a voice session. The tem
 - `POST /api/agora/realtime/setup` to mint RTC tokens and start the ConvoAI agent.
 - `POST /api/agora/realtime/end` to stop the agent when the session ends.
 
+## Why this split works
+
+Agora does the realtime work: channel join, mic audio, subscribed agent audio, and the ConvoAI pipeline. Vercel does the web app work: React UI, server routes, environment variables, previews, and production deployment.
+
+That split keeps sensitive Agora credentials out of the browser while still giving product teams a normal Vercel workflow.
+
 ## Troubleshooting
 
-- `agora_credentials_missing`: `AGORA_APP_ID` or `AGORA_APP_CERTIFICATE` is missing in the deployment environment.
+- `agora_credentials_missing`: `AGORA_APP_ID` or `AGORA_APP_CERTIFICATE` is missing in the Vercel environment.
 - `convoai_agent_start_failed`: the pipeline ID, Agora project access, region, or ConvoAI entitlement is not valid for the current project.
 - Browser joins but no agent audio: open the debug panel with `?debug=1` and check setup, join, publish, subscribe, and remote audio events.
 - Microphone fails in production: use HTTPS. Browsers block microphone capture on insecure origins.

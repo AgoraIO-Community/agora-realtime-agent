@@ -21,7 +21,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "dev:website": "npm --workspace agora-agent-pipeline-website run dev -- --port 3001",
     "dev:template": "npm --workspace agora-agent-pipeline-template run dev",
-    "test:badges": "node --import tsx --test tests/badge-route.test.ts"
+    "test:badges": "node --import tsx --test tests/badge-route.test.ts",
+    "test:create": "npm --workspace create-agora-realtime-agent test"
   },
   "dependencies": {
     "@ai-sdk/react": "4.0.9",
