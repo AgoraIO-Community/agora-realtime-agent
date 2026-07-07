@@ -13,6 +13,6 @@ await cp(source, destination, {
   filter(sourcePath) {
     const relative = path.relative(source, sourcePath);
     const segments = relative.split(path.sep);
-    return !segments.some((segment) => ['node_modules', '.next', 'package-lock.json', '.DS_Store'].includes(segment));
+    return !segments.some((segment) => ['node_modules', '.next', 'package-lock.json', '.gitignore', '.DS_Store'].includes(segment));
   },
 });
