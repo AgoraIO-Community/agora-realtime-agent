@@ -1,7 +1,7 @@
 {
   "name": "create-agora-realtime-agent",
   "version": "0.1.1",
-  "description": "Create an Agora + Vercel realtime voice agent app from the official template.",
+  "description": "Create an Agora-powered voice agent app for Vercel from the official template.",
   "type": "module",
   "homepage": "https://agora-realtime-agent.vercel.app/",
   "repository": {

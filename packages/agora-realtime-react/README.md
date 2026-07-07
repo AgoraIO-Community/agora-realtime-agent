@@ -1,8 +1,8 @@
 # Agora Realtime React
 
-[![Agora + Vercel Voice Agents](https://agora-realtime-agent.vercel.app/api/badges/npm-homepage.svg?pkg=agora-realtime-react)](https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme-badge&utm_campaign=agora_voice_agents)
+[![Agora Voice Agents for Vercel](https://agora-realtime-agent.vercel.app/api/badges/npm-homepage.svg?pkg=agora-realtime-react)](https://agora-realtime-agent.vercel.app/?utm_source=npm-agora-realtime-react&utm_medium=readme-badge&utm_campaign=agora_voice_agents)
 
-React hooks and voice UI primitives for Agora voice agents running inside Vercel and React apps.
+React hooks and voice UI primitives for Agora-powered realtime voice agents in Vercel and React apps.
 
 `agora-realtime-react` gives the browser a typed Agora RTC runtime, audio metering, and a reusable voice ring button. Pair it with Vercel or any server runtime that can mint Agora RTC tokens and start a ConvoAI or AI Studio pipeline.
 

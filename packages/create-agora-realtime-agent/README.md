@@ -1,8 +1,8 @@
 # create-agora-realtime-agent
 
-[![Agora + Vercel Voice Agents](https://agora-realtime-agent.vercel.app/api/badges/npm-homepage.svg?pkg=create-agora-realtime-agent)](https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=readme-badge&utm_campaign=agora_voice_agents)
+[![Agora Voice Agents for Vercel](https://agora-realtime-agent.vercel.app/api/badges/npm-homepage.svg?pkg=create-agora-realtime-agent)](https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=readme-badge&utm_campaign=agora_voice_agents)
 
-Create an Agora + Vercel realtime voice agent app from the official template.
+Create an Agora-powered voice agent app for Vercel from the official template.
 
 Homepage: [agora-realtime-agent.vercel.app](https://agora-realtime-agent.vercel.app/?utm_source=npm-create-agora-realtime-agent&utm_medium=readme&utm_campaign=agora_voice_agents)
 

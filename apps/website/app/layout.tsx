@@ -4,8 +4,8 @@ import { GoogleAnalytics } from '../components/google-analytics';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Agora + Vercel Voice Agents',
-  description: 'Build Agora realtime voice agents with a Vercel-hosted React app, server routes, npm SDK, and shadcn voice UI.',
+  title: 'Agora Voice Agents for Vercel',
+  description: 'Build Agora-powered realtime voice agents with a Vercel-hosted React app, server routes, npm SDK, and shadcn voice UI.',
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -7,7 +7,7 @@ import { parseCreateArgs, scaffoldProject } from '../src/create-app.mjs';
 const templateDir = fileURLToPath(new URL('../template', import.meta.url));
 
 function printHelp() {
-  console.log(`Create an Agora + Vercel realtime voice agent app.
+  console.log(`Create an Agora-powered voice agent app for Vercel.
 
 Usage:
   npm create agora-realtime-agent@latest [project-name] [options]

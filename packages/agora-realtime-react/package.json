@@ -1,7 +1,7 @@
 {
   "name": "agora-realtime-react",
   "version": "0.1.2",
-  "description": "React hooks and voice UI primitives for Agora voice agents in Vercel and React apps.",
+  "description": "React hooks and voice UI primitives for Agora-powered realtime voice agents in Vercel and React apps.",
   "private": false,
   "type": "module",
   "sideEffects": false,

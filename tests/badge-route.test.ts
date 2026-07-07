@@ -27,7 +27,7 @@ test('npm homepage badge route returns a non-cacheable svg badge and logs analyt
     assert.equal(response.headers.get('cache-control'), 'no-store, max-age=0, s-maxage=0');
     assert.equal(response.headers.get('x-robots-tag'), 'noindex');
     assert.match(body, /^<svg/);
-    assert.match(body, /Agora \+ Vercel/);
+    assert.match(body, /Agora Voice Agents/);
 
     assert.equal(logs.length, 1);
     const event = JSON.parse(logs[0] ?? '{}');

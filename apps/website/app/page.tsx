@@ -63,7 +63,7 @@ export default function HomePage() {
       <header className="site-nav" aria-label="Primary">
         <a className="brand-mark" href="/">
           <span className="brand-dot" aria-hidden="true" />
-          Agora + Vercel Voice Agents
+          Agora Voice Agents for Vercel
         </a>
         <nav className="nav-links">
           <a href="#stack">Stack</a>
@@ -77,7 +77,7 @@ export default function HomePage() {
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">Agora realtime voice, shipped as a Vercel app</p>
-          <h1 id="hero-title">Build Agora voice agents on Vercel.</h1>
+          <h1 id="hero-title">Build Agora Voice Agents for Vercel.</h1>
           <p className="hero-lede">
             Agora handles the live voice channel and ConvoAI agent. Vercel hosts the React app, server routes, and deployment flow. This repo gives you the SDK, template, and voice UI to connect both sides.
           </p>

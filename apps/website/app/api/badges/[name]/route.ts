@@ -76,7 +76,7 @@ function hashedClientIp(request: Request): string | undefined {
 
 function renderBadgeSvg(pkg: string) {
   const label = 'homepage';
-  const message = 'Agora + Vercel';
+  const message = 'Agora Voice Agents';
   const pkgTitle = escapeXml(pkg);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="178" height="20" role="img" aria-label="${escapeXml(label)}: ${escapeXml(message)}" data-package="${pkgTitle}">

@@ -1,4 +1,4 @@
-# Agora + Vercel Voice Agent
+# Agora Voice Agents for Vercel
 
 This app was generated from the Agora realtime voice agent template.
 
