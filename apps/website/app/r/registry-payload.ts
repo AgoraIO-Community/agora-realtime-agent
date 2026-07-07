@@ -40,7 +40,7 @@ export async function registryItemPayload(item: RegistryItem) {
     '$schema': 'https://ui.shadcn.com/schema/registry-item.json',
     categories: item.categories,
     description: item.description,
-    docs: 'Install with `npx shadcn@latest add https://agora-realtime-agent.vercel.app/r/voice-ring-button.json`, then import `VoiceRingButton` and `useVoiceMeter` from your configured shadcn aliases.',
+    docs: item.docs,
     files: await Promise.all(item.files.map(async (file) => ({
       content: await readSourceFile(file.path),
       path: file.path,

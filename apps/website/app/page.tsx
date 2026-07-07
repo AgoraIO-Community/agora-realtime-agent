@@ -2,30 +2,30 @@ import { DemoVoiceShowcase } from '../components/demo-voice-showcase';
 
 const pipelineSteps = [
   {
-    label: 'NPM package',
-    text: 'agora-realtime-react is the standalone SDK boundary: hooks, typed RTC state, voice meters, and reusable voice UI primitives.',
+    label: 'Agora realtime media',
+    text: 'The browser joins an Agora RTC channel directly. ConvoAI or an AI Studio pipeline joins the same channel as the agent.',
   },
   {
-    label: 'AI SDK adjacent',
-    text: 'The hook shape is familiar to Vercel AI SDK realtime users, while the media plane stays on Agora RTC instead of an AI SDK WebSocket provider.',
+    label: 'Vercel app boundary',
+    text: 'Next.js routes on Vercel mint the RTC token, start the agent, and keep the Agora App Certificate on the server.',
   },
   {
-    label: 'Agent apps',
-    text: 'Use it for voice-first support, tutoring, concierge, interview, and sales agent experiences backed by Agora ConvoAI or AI Studio pipelines.',
+    label: 'React developer path',
+    text: 'Use the npm package for the full runtime, or install the voice ring through shadcn when you only need the UI.',
   },
 ];
 
 const packageFeatures = [
-  'useAgoraRealtime for browser-side Agora RTC session state',
-  'useVoiceMeter for microphone or remote audio level analysis',
-  'VoiceRingButton for human and AI voice activity visualization',
-  'typed setup contracts for your own server routes',
+  'useAgoraRealtime for Agora RTC session state in React',
+  'typed setup responses for Vercel server routes',
+  'useVoiceMeter for microphone and remote audio levels',
+  'VoiceRingButton for human and AI voice activity',
 ];
 
 const deployChecklist = [
   'Create an Agora project and copy the App ID plus App Certificate.',
   'Publish an AI Studio pipeline and copy its pipeline ID.',
-  'Deploy the template on Vercel with AGORA_APP_ID, AGORA_APP_CERTIFICATE, and AGORA_CONVOAI_PIPELINE_ID.',
+  'Deploy the Vercel template with AGORA_APP_ID, AGORA_APP_CERTIFICATE, and AGORA_CONVOAI_PIPELINE_ID.',
 ];
 
 const uiChecklist = [
@@ -40,10 +40,10 @@ export default function HomePage() {
       <header className="site-nav" aria-label="Primary">
         <a className="brand-mark" href="/">
           <span className="brand-dot" aria-hidden="true" />
-          Agora Agent Pipeline
+          Agora + Vercel Voice Agents
         </a>
         <nav className="nav-links">
-          <a href="#sdk">SDK</a>
+          <a href="#stack">Stack</a>
           <a href="#package">Package</a>
           <a href="#deploy">Deploy</a>
           <a href="#ui">UI</a>
@@ -52,17 +52,17 @@ export default function HomePage() {
 
       <section className="hero-section" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow">Standalone npm SDK for Agora realtime agents</p>
-          <h1 id="hero-title">Agora Realtime React</h1>
+          <p className="eyebrow">Agora realtime voice, shipped as a Vercel app</p>
+          <h1 id="hero-title">Build Agora voice agents on Vercel.</h1>
           <p className="hero-lede">
-            A publishable React package for Agora-powered voice agents, with AI-SDK-like frontend ergonomics, Agora RTC media, and reusable voice UI primitives.
+            Agora handles the live voice channel and ConvoAI agent. Vercel hosts the React app, server routes, and deployment flow. This repo gives you the SDK, template, and voice UI to connect both sides.
           </p>
         </div>
 
         <DemoVoiceShowcase />
       </section>
 
-      <section className="pipeline-section" id="sdk" aria-label="SDK and template overview">
+      <section className="pipeline-section" id="stack" aria-label="Agora and Vercel stack overview">
         {pipelineSteps.map((step) => (
           <article className="pipeline-card" key={step.label}>
             <span>{step.label}</span>
@@ -73,12 +73,12 @@ export default function HomePage() {
 
       <section className="template-section" id="package">
         <div>
-          <p className="eyebrow">Package boundary</p>
-          <h2>Publish the runtime once, reuse it across every agent app.</h2>
+          <p className="eyebrow">NPM package</p>
+          <h2>React runtime for Agora agents in Vercel apps.</h2>
         </div>
         <div className="package-copy">
           <p>
-            The npm package owns the browser realtime runtime. Templates and product apps own credentials, server routes, pipeline configuration, and visual composition.
+            <code>agora-realtime-react</code> gives the browser a clean React API for Agora RTC. Your Vercel route owns credentials, token generation, and ConvoAI startup.
           </p>
           <ul className="package-list">
             {packageFeatures.map((feature) => <li key={feature}>{feature}</li>)}
@@ -90,10 +90,10 @@ export default function HomePage() {
       <section className="journey-section" aria-label="User journeys">
         <article className="journey-panel" id="deploy">
           <div className="journey-copy">
-            <p className="eyebrow">Journey 1</p>
-            <h2>Deploy your own voice agent.</h2>
+            <p className="eyebrow">Deploy path</p>
+            <h2>Run an Agora agent from Vercel.</h2>
             <p>
-              Publish a pipeline in Agora AI Studio, then deploy the template on Vercel. The server route owns token generation and starts the ConvoAI agent with your published pipeline ID.
+              Publish a pipeline in Agora AI Studio, add the credentials to Vercel, and deploy the template. The browser gets only a scoped RTC token. The App Certificate stays server-side.
             </p>
           </div>
           <ol className="journey-list">
@@ -107,10 +107,10 @@ AGORA_CONVOAI_PIPELINE_ID=...`}</code></pre>
 
         <article className="journey-panel" id="ui">
           <div className="journey-copy">
-            <p className="eyebrow">Journey 2</p>
-            <h2>Install only the voice UI.</h2>
+            <p className="eyebrow">UI path</p>
+            <h2>Add the Agora voice ring to any React app.</h2>
             <p>
-              The shadcn registry endpoint emits the voice ring and meter hook from the SDK source of truth. Product teams can install the UI without adopting the agent template.
+              The shadcn registry serves the voice ring and meter hook from the same SDK source. Use it in a Vercel app, a prototype, or an existing design system without adopting the full template.
             </p>
           </div>
           <ol className="journey-list">

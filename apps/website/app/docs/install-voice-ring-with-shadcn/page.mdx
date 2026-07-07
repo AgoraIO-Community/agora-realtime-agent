@@ -1,10 +1,10 @@
 import { MicrophoneVoiceRingPreview } from '../../../components/microphone-voice-ring-preview';
 
-# Install the voice ring with shadcn
+# Install the Agora voice ring with shadcn
 
-This path is for users who only want the UI primitive: a circular dual-channel voice button plus the Web Audio meter hook.
+Use this path when you want the Agora voice UI in a Vercel or React app, but you do not need the full agent template.
 
-If you want the full Agora realtime runtime, use the `agora-realtime-react` npm package instead. The shadcn path is for design-system consumers who want to vendor the UI source into their app.
+The registry installs a circular dual-channel voice button plus the Web Audio meter hook. If you want the full Agora realtime runtime, use the `agora-realtime-react` npm package instead.
 
 <MicrophoneVoiceRingPreview />
 
@@ -26,9 +26,26 @@ packages/agora-realtime-react/src/use-voice-meter.ts
 
 The registry endpoint reads those SDK source files and emits a shadcn registry item at request time.
 
+## Requirements
+
+- A React app with shadcn initialized. The normal npm path is:
+
+```bash
+npx create-next-app@latest my-agora-agent \
+  --ts --tailwind --eslint --app --src-dir --import-alias '@/*' \
+  --use-npm
+cd my-agora-agent
+npx shadcn@latest init -d
+```
+
+- The project must have working shadcn aliases for `@ui` and `@hooks`; the registry writes files through those aliases.
+- The component is UI-only. Use `agora-realtime-react` and your own server route when you need a live Agora agent session.
+- For local Next.js development, open the app through `http://localhost:<port>`. Using `127.0.0.1` can trigger Next.js dev-origin restrictions unless `allowedDevOrigins` is configured.
+- Microphone previews require HTTPS in production, or `http://localhost` locally.
+
 ## Install from the hosted registry
 
-After the website is deployed, install the component with:
+Install the component from the Vercel-hosted registry:
 
 ```bash
 npx shadcn@latest add https://agora-realtime-agent.vercel.app/r/voice-ring-button.json
@@ -47,18 +64,18 @@ The preview above renders the actual component. It uses the microphone as the hu
 
 ## Component design
 
-`VoiceRingButton` is intentionally a small visual primitive, not an agent runtime. It draws two waveform rings on canvas:
+`VoiceRingButton` is a visual primitive, not an agent runtime. It draws two waveform rings on canvas:
 
 - `humanLevels` drives the inward warm ring for local microphone activity.
 - `aiLevels` drives the outward cool ring for agent activity. Pass `null` when there is no agent output.
 - `state` controls the button mood: disconnected, connecting, listening, thinking, or interrupted.
 - `onClick` stays app-owned, so the same component can start a microphone session, play an audio sample, or trigger a custom workflow.
 
-`useVoiceMeter` is the Web Audio helper that converts a `MediaStream` into normalized bar levels. The preview above gets that stream from `navigator.mediaDevices.getUserMedia()`. In a full agent app, you can pass remote RTC audio levels as `aiLevels`; for a UI-only preview, keep `aiLevels` as `null`.
+`useVoiceMeter` is the Web Audio helper that converts a `MediaStream` into normalized bar levels. The preview above gets that stream from `navigator.mediaDevices.getUserMedia()`. In a full Agora agent app, you can pass remote RTC audio levels as `aiLevels`; for a UI-only preview, keep `aiLevels` as `null`.
 
 ## Registry shape
 
-The website serves:
+The Vercel website serves:
 
 - `GET /r/registry.json` for catalog discovery.
 - `GET /r/voice-ring-button.json` for `shadcn add`.

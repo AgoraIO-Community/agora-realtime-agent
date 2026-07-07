@@ -1,12 +1,14 @@
-# Agora Agent Pipeline
+# Agora + Vercel Voice Agents
 
-Reference implementation for a standalone Agora Realtime React npm package, a public demo website, and an Agora Agent Pipeline template.
+Reference implementation for building Agora realtime voice agents as Vercel apps. The repo includes a React npm package, a Vercel-ready Next.js template, a public demo site, and a shadcn voice UI component.
+
+Homepage: https://agora-realtime-agent.vercel.app/?utm_source=github&utm_medium=readme&utm_campaign=agora_voice_agents
 
 Research baseline: 2026-07-02.
 
-## Current Direction
+## Current direction
 
-The active product shape is a publishable React package plus examples that consume it. The browser uses Agora Web SDK / RTC directly, while the app server owns session setup and teardown:
+The product shape is an Agora + Vercel stack:
 
 ```text
 Browser device
@@ -15,7 +17,7 @@ Browser device
   - Agora Web SDK joins the RTC channel directly
         |
         v
-Next.js demo routes
+Vercel / Next.js routes
   - POST /api/agora/realtime/setup
   - POST /api/agora/realtime/end
   - mint browser RTC token and start/stop ConvoAI agent
@@ -26,22 +28,55 @@ Agora RTC channel + ConvoAI
   - ConvoAI agent subscribes, runs ASR/Turn/LLM/TTS, and publishes speaker audio
 ```
 
-`packages/agora-realtime-react` exports `useAgoraRealtime`, `useVoiceMeter`, and the reusable `VoiceRingButton` UI primitive. It is designed to be published as a standalone npm package. Its React hook ergonomics stay close to `@ai-sdk/react` `experimental_useRealtime` where useful, but the primary media plane is Agora RTC, not an AI SDK WebSocket provider.
+Agora owns the realtime media and agent runtime. Vercel owns the web app, API routes, environment variables, and deployment flow. The browser never sees the App Certificate.
 
-## Implemented Layout
+`packages/agora-realtime-react` exports `useAgoraRealtime`, `useVoiceMeter`, and the reusable `VoiceRingButton` UI primitive. The package gives Vercel apps a React API for Agora RTC while keeping credentials, token generation, and ConvoAI setup on the server.
+
+## Requirements
+
+- Repository development uses Node.js `>=24.0.0` and npm `11.x` as declared in `package.json`.
+- Consumer React apps can use `agora-realtime-react` with React `^18.3.0` or `^19.0.0`; the package must not pin a single React patch release.
+- The shadcn path assumes a normal npm app with shadcn initialized, for example `create-next-app --use-npm` followed by `npx shadcn@latest init -d`.
+- Google Analytics is optional for the public website. Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel when the GA4 Measurement ID is available; leave it empty to disable analytics.
+- Live agent demos require server-only Agora credentials: `AGORA_APP_ID`, `AGORA_APP_CERTIFICATE`, and `AGORA_CONVOAI_PIPELINE_ID`.
+- Microphone capture requires HTTPS in production, or `http://localhost` during local development.
+
+## Implemented layout
 
 ```text
 apps/
-  website/                  Public SDK/template landing page with local PCM voice demo
+  website/                   Public Agora + Vercel landing page with local PCM voice demo
 templates/
-  agora-agent-pipeline/    Agent pipeline template with direct Agora RTC setup/end routes
+  agora-agent-pipeline/      Vercel-ready agent template with Agora RTC setup/end routes
 packages/
-  agora-realtime-react/    Publishable React realtime package using agora-rtc-sdk-ng
+  agora-realtime-react/      React package using agora-rtc-sdk-ng
+  create-agora-realtime-agent/ npm init/create scaffold package for the template
 registry/
   default/voice-ring-button/ shadcn registry source for the voice ring primitive
 ```
 
-## Run Locally
+## Create a new agent app
+
+After `create-agora-realtime-agent` is published, developers can scaffold the Vercel-ready template with npm:
+
+```bash
+npm create agora-realtime-agent@latest my-agent
+```
+
+Equivalent forms:
+
+```bash
+npm init agora-realtime-agent@latest my-agent
+npx create-agora-realtime-agent@latest my-agent
+```
+
+Use `-- --no-install` for smoke tests or CI runs that should only copy the template.
+
+## External platform tracking
+
+Platform-facing pages link back to the homepage with source-specific UTM tags so traffic from npm, shadcn, GitHub, and generated templates can be separated in analytics. The homepage remains the single campaign landing page.
+
+## Run locally
 
 ```bash
 npm install
@@ -70,10 +105,10 @@ AGORA_CONVOAI_PIPELINE_ID=bf6a5c2396714f81a0de57ab2fbe2b72 \
 npm run dev:template
 ```
 
-`AGORA_CONVOAI_PIPELINE_ID` should point at the published AI Studio pipeline. The setup route sends it as top-level `pipeline_id`, generates the RTC channel, UIDs, and tokens server-side, and avoids overriding the pipeline's published ASR/LLM/TTS/turn settings.
+`AGORA_CONVOAI_PIPELINE_ID` should point at the published AI Studio pipeline. The Vercel setup route sends it as top-level `pipeline_id`, generates the RTC channel, UIDs, and tokens server-side, and avoids overriding the pipeline's published ASR/LLM/TTS/turn settings.
 
-## Documentation Map
+## Documentation map
 
-- [`apps/website/app/docs/agora-realtime-react-package/page.mdx`](./apps/website/app/docs/agora-realtime-react-package/page.mdx) — standalone npm package positioning and relationship to Vercel AI SDK.
-- [`apps/website/app/docs/deploy-agent-pipeline/page.mdx`](./apps/website/app/docs/deploy-agent-pipeline/page.mdx) — deploy an Agora AI Studio pipeline with the Vercel template.
-- [`apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx`](./apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx) — install the voice ring UI through the shadcn registry endpoint.
+- [`apps/website/app/docs/agora-realtime-react-package/page.mdx`](./apps/website/app/docs/agora-realtime-react-package/page.mdx) — React package for using Agora RTC from a Vercel app.
+- [`apps/website/app/docs/deploy-agent-pipeline/page.mdx`](./apps/website/app/docs/deploy-agent-pipeline/page.mdx) — deploy an Agora AI Studio pipeline through the Vercel template.
+- [`apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx`](./apps/website/app/docs/install-voice-ring-with-shadcn/page.mdx) — install the Agora voice ring UI through the shadcn registry endpoint.
